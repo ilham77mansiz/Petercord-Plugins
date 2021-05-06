@@ -1,7 +1,7 @@
 #
 # All rights reserved.
 
-__all__ = ['Config', 'get_version']
+__all__ = ["Config", "get_version"]
 
 import os
 from typing import Set
@@ -10,7 +10,8 @@ import heroku3
 from git import Repo
 from pyrogram import filters
 
-from petercord import logging, logbot
+from petercord import logbot, logging
+
 from . import versions
 
 _REPO = Repo()
@@ -19,13 +20,16 @@ logbot.reply_last_msg("Setting Configs ...")
 
 
 class Config:
-    """ Configs to setup Petercord """
+    """Configs to setup Petercord"""
+
     API_ID = int(os.environ.get("API_ID"))
     API_HASH = os.environ.get("API_HASH")
     WORKERS = int(os.environ.get("WORKERS")) or os.cpu_count() + 4
     BOT_TOKEN = os.environ.get("BOT_TOKEN")
     HU_STRING_SESSION = os.environ.get("HU_STRING_SESSION")
-    OWNER_ID = tuple(filter(lambda x: x, map(int, os.environ.get("OWNER_ID", "0").split())))
+    OWNER_ID = tuple(
+        filter(lambda x: x, map(int, os.environ.get("OWNER_ID", "0").split()))
+    )
     LOG_CHANNEL_ID = int(os.environ.get("LOG_CHANNEL_ID"))
     AUTH_CHATS = (OWNER_ID[0], LOG_CHANNEL_ID) if OWNER_ID else (LOG_CHANNEL_ID,)
     DB_URI = os.environ.get("DATABASE_URL")
@@ -74,21 +78,23 @@ class Config:
     ALLOWED_COMMANDS: Set[str] = set()
     ANTISPAM_SENTRY = False
     RUN_DYNO_SAVER = False
-    HEROKU_APP = heroku3.from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME] \
-        if HEROKU_ENV and HEROKU_API_KEY and HEROKU_APP_NAME else None
+    HEROKU_APP = (
+        heroku3.from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME]
+        if HEROKU_ENV and HEROKU_API_KEY and HEROKU_APP_NAME
+        else None
+    )
     STATUS = None
 
 
 def get_version() -> str:
-    """ get userge version """
+    """get userge version"""
     ver = f"{versions.__major__}.{versions.__minor__}.{versions.__micro__}"
     if "/usergeteam/userge" in Config.UPSTREAM_REPO.lower():
-        diff = list(_REPO.iter_commits(f'v{ver}..HEAD'))
+        diff = list(_REPO.iter_commits(f"v{ver}..HEAD"))
         if diff:
             ver = f"{ver}-patch.{len(diff)}"
     else:
-        diff = list(_REPO.iter_commits(
-            f'{Config.UPSTREAM_REMOTE}/master..HEAD'))
+        diff = list(_REPO.iter_commits(f"{Config.UPSTREAM_REMOTE}/master..HEAD"))
         if diff:
             ver = f"{ver}-custom.{len(diff)}"
-    return ver + '@' + _REPO.active_branch.name
+    return ver + "@" + _REPO.active_branch.name

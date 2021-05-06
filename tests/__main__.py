@@ -2,7 +2,6 @@
 
 import os
 
-from petercord import petercord
 
 
 async def _worker() -> None:
