@@ -303,7 +303,7 @@ if petercord.has_bot:
 
     def filter_data(cur_pos: str):
         pos_list = cur_pos.split('|')
-        plg = userge.manager.plugins[pos_list[2]]
+        plg = petercord.manager.plugins[pos_list[2]]
         flts = {flt.name: flt for flt in plg.commands + plg.filters}
         flt = flts[pos_list[-1]]
         flt_data = f"""
