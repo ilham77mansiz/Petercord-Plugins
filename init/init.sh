@@ -41,6 +41,6 @@ runPetercord-Plugins() {
     initUserge
     startPetercord-Plugins "$@"
     local code=$?
-    stopUserge
+    stopPetercord-Plugins
     return $code
 }
