@@ -338,7 +338,7 @@ if petercord.has_bot:
         buttons = [tmp_btns] + buttons
         return text, buttons
 
-    @userge.bot.on_inline_query()
+    @petercord.bot.on_inline_query()
     async def inline_answer(_, inline_query: InlineQuery):
         results = [
             InlineQueryResultArticle(
