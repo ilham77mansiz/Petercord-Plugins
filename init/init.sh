@@ -38,7 +38,7 @@ handleSigInt() {
 }
 
 runPetercord-Plugins() {
-    initUserge
+    initPetercord-Plugins
     startPetercord-Plugins "$@"
     local code=$?
     stopPetercord-Plugins
