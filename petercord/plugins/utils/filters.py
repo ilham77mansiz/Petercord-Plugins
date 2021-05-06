@@ -82,7 +82,7 @@ async def filters_active(message: Message) -> None:
         'flags': {
             '-all': "remove all filters in this chat",
             '-every': "remove all filters in every chats"},
-        'usage': "{tr}delfilter [filter name | filter type]\n{tr}delfilter -all"},
+        'petercord': "{tr}delfilter [filter name | filter type]\n{tr}delfilter -all"},
     allow_channels=False, allow_bots=False)
 async def delete_filters(message: Message) -> None:
     """ delete filter in current chat """
