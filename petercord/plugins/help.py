@@ -60,7 +60,7 @@ async def helpme(message: Message) -> None:  # pylint: disable=missing-function-
             for i, cmd in enumerate(commands, start=1):
                 out_str += (f"    🤖 <b>cmd(<code>{i}</code>):</b>  <code>{cmd.name}</code>\n"
                             f"    📚 <b>info:</b>  <i>{cmd.doc}</i>\n\n")
-            out_str += f"""📕 <b>Usage:</b>  <code>{Config.CMD_TRIGGER}help [command_name]</code>"""
+            out_str += f"""📕 <b>petercord:</b>  <code>{Config.CMD_TRIGGER}help [command_name]</code>"""
         else:
             commands = userge.manager.enabled_commands
             key = key.lstrip(Config.CMD_TRIGGER)
@@ -106,7 +106,7 @@ if petercord.has_bot:
         elif len(pos_list) == 2:
             buttons = parse_buttons(p_num, cur_pos,
                                     lambda x: f"🗃 {x}",
-                                    userge.manager.get_all_plugins()[pos_list[-1]])
+                                    petercord.manager.get_all_plugins()[pos_list[-1]])
         elif len(pos_list) == 3:
             _, buttons = plugin_data(cur_pos, p_num)
         await callback_query.edit_message_reply_markup(
@@ -169,7 +169,7 @@ if petercord.has_bot:
     @check_owner
     async def callback_mm(callback_query: CallbackQuery):
         await callback_query.edit_message_text(
-            "🖥 **Userge Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
+            "🖥 **petercord Main Menu** 🖥", reply_markup=InlineKeyboardMarkup(main_menu_buttons()))
 
     @petercord.bot.on_callback_query(filters=filters.regex(pattern=r"^chgclnt$"))
     @check_owner
