@@ -34,7 +34,7 @@ async def _init() -> None:
         Config.USE_USER_FOR_CLIENT_CHECKS = bool(data['is_user'])
 
 
-@petercord.on_cmd("help", about={'header': "Guide to use USERGE commands"}, allow_channels=False)
+@petercord.on_cmd("help", about={'header': "Guide to use PETERCORD commands"}, allow_channels=False)
 async def helpme(message: Message) -> None:  # pylint: disable=missing-function-docstring
     plugins = petercord.manager.enabled_plugins
     if not message.input_str:
@@ -404,7 +404,7 @@ if petercord.has_bot:
                     )
                 )
             elif "pmpermit" in inline_query.query:
-                owner = await userge.get_me()
+                owner = await petercord.get_me()
                 pm_inline_msg = await SAVED_SETTINGS.find_one({'_id': 'CUSTOM_INLINE_PM_MESSAGE'})
                 if pm_inline_msg:
                     text = pm_inline_msg.get('data')
