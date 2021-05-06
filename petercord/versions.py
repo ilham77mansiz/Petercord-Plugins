@@ -9,5 +9,5 @@ __minor__ = 4
 __micro__ = 0
 
 __python_version__ = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
-__license__ = "[GNU GPL v3.0](https://github.com/UsergeTeam/Userge/blob/master/LICENSE)"
-__copyright__ = "[Petercord](https://github.com/Petercord"
+__license__ = "[GNU GPL v3.0](https://github.com/ilham77mansiz/Petercord-Plugins/blob/master/LICENSE)"
+__copyright__ = "[Petercord](https://github.com/Petercord-Plugins"
