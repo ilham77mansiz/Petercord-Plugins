@@ -12,4 +12,4 @@ async def _worker() -> None:
 
 if __name__ == "__main__":
     userge.begin(_worker())
-    print('userge test has been finished!')
+    print('Petercord-Plugins test has been finished!')
