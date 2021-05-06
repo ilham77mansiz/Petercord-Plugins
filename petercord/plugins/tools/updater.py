@@ -9,12 +9,12 @@ from git.exc import GitCommandError
 
 from petercord import petercord, Message, Config, pool
 
-LOG = userge.getLogger(__name__)
+LOG = petercord.getLogger(__name__)
 CHANNEL = petercord.getCLogger(__name__)
 
 
 @petercord.on_cmd("update", about={
-    'header': "Check Updates or Update Userge",
+    'header': "Check Updates or Update Petercord",
     'flags': {
         '-pull': "pull updates",
         '-push': "push updates to heroku",
