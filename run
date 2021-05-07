@@ -2,7 +2,7 @@ trap joinProc INT TERM
 
 declare -i bgProc
 declare -ir usr1=138
-declare -r cmd='. init/init.sh; runUserge "$@"'
+declare -r cmd='. init/init.sh; runPetercord-Plugins "$@"'
 
 setProc() {
     bgProc=$1
