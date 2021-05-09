@@ -1,4 +1,6 @@
 #!/bin/bash
 
-. initt
-. run
+
+. init/init.sh
+
+runPetercordPlugins "$@"
