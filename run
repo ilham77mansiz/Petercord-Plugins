@@ -3,4 +3,3 @@
 
 . init/init.sh
 
-runUserge "$@"
