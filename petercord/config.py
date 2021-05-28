@@ -94,7 +94,7 @@ def get_version() -> str:
         if diff:
             ver = f"{ver}-patch.{len(diff)}"
     else:
-        diff = list(_REPO.iter_commits(f"{Config.UPSTREAM_REMOTE}/master..HEAD"))
+        diff = list(_REPO.iter_commits(f"{Config.UPSTREAM_REMOTE}/Petercord-Userbot..HEAD"))
         if diff:
             ver = f"{ver}-custom.{len(diff)}"
     return ver + "@" + _REPO.active_branch.name
